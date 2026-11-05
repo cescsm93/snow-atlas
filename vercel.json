@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "framework": null,
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 60,
+      "excludeFiles": "{models/**,data/**,facilities/**,vendor/**,tests/**,tools/**}"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}

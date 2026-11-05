@@ -1,0 +1,9 @@
+.env*
+!.env.example
+.vercel/
+node_modules/
+__pycache__/
+*.pyc
+data/dem-cache/
+data/runs.geojson
+.vercel
