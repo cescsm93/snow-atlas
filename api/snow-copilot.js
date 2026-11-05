@@ -34,7 +34,7 @@ async function handler(req,res){
   let input;try{input=await body(req)}catch{return send(400,{error:'请求格式不正确或过大'})}
   const question=typeof input.question==='string'?input.question.trim():'';
   if(question.length<2||question.length>600)return send(400,{error:'请输入2–600字的问题'});
-  if(process.env.COPILOT_AI_ENABLED!=='true'||!process.env.DEEPSEEK_API_KEY)return send(503,{error:'现有DeepSeek服务尚未启用或配置'});
+  if(process.env.COPILOT_AI_ENABLED!=='true'||!process.env.DEEPSEEK_API_KEY)return send(503,{error:'独立雪场站尚未配置 DeepSeek 密钥，请在本项目的 Vercel 环境变量中配置'});
   if(!quota(req)){res.setHeader('Retry-After','3600');return send(429,{error:'提问频率已达保护上限，请稍后重试'})}
   const {sources,context}=evidence(question,input.resortId);
   try{

@@ -3,7 +3,7 @@
 独立项目，与 Urban Renewal 城市更新平台无关。
 
 - GitHub：https://github.com/cescsm93/snow-atlas
-- 在线地址：独立 Vercel 部署验证后更新。
+- 在线浏览：[https://snow-atlas.vercel.app/](https://snow-atlas.vercel.app/)
 - 85座雪场，包含20座中国雪场；真实 DEM 和可追溯雪道、设施、收藏、足迹、对比、坡度分析及滑雪示意动画。
 - 地形和线路模型不是官方完整名录或实时雪面；坡度为历史 DEM 沿线窗口估算。
 - 商户记录可能包含雪场周边店铺，未收录/查询失败明确标注。来源见每条记录及 data/。
@@ -19,3 +19,9 @@ Copilot只读取本项目服务端环境变量 `DEEPSEEK_API_KEY`、`COPILOT_AI_
 © OpenStreetMap contributors (ODbL)。OpenSkiData / OpenSkiMap.org, Skimap.org, Who’s On First, © Mapterhorn。
 真实地形来自 Mapzen / Terrain Tiles，具体归属和采样尺度见 models/ 中 sources 与 gridSpacingMetres。
 照片和票价仅按逐场来源展示；访问可用性与运营网站身份核实是不同事项。
+
+## 独立部署配置状态
+
+本项目使用自己的 Vercel 项目 `snow-atlas`，前端与 API 均为同源。首次独立部署已完成。
+DeepSeek 原项目 Secret 不可回读，需在本项目 Settings → Environment Variables 中填入 `DEEPSEEK_API_KEY`（Production）；同时设置 `COPILOT_AI_ENABLED=true` 后重新部署。
+若要推送后自动部署，需要在 Vercel 项目的 Git 设置中连接本仓库。目前源码推送和独立部署均已完成，Git 自动部署连接待配置。
