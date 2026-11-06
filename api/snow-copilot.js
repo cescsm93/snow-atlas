@@ -1,3 +1,4 @@
+const {createHash,timingSafeEqual}=require('node:crypto');
 // Separate Snow Atlas endpoint; reuses the existing server-only DeepSeek key.
 const resorts = require('../lib/snow-resorts.json');
 const terrain = require('../lib/snow-terrain.json');
@@ -27,10 +28,14 @@ async function handler(req,res){
   res.setHeader('Vary','Origin');res.setHeader('Cache-Control','no-store');
   if(origin&&!allowedOrigins.has(origin)){res.statusCode=403;return res.end('Origin not allowed')}
   if(origin)res.setHeader('Access-Control-Allow-Origin',origin);
-  res.setHeader('Access-Control-Allow-Methods','POST, OPTIONS');res.setHeader('Access-Control-Allow-Headers','Content-Type');
+  res.setHeader('Access-Control-Allow-Methods','POST, OPTIONS');res.setHeader('Access-Control-Allow-Headers','Content-Type, X-Demo-Code');
   const send=(status,data)=>{res.statusCode=status;res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify(data))};
   if(req.method==='OPTIONS'){res.statusCode=204;return res.end()}
   if(req.method!=='POST')return send(405,{error:'仅支持POST'});
+  const access=process.env.COPILOT_DEMO_CODE;
+  if(!access)return send(503,{error:'演示问答尚未启用访问保护'});
+  const supplied=req.headers['x-demo-code'];
+  if(typeof supplied!=='string'||supplied.length>200||!timingSafeEqual(createHash('sha256').update(supplied).digest(),createHash('sha256').update(access).digest()))return send(401,{error:'请输入有效的演示访问码'});
   let input;try{input=await body(req)}catch{return send(400,{error:'请求格式不正确或过大'})}
   const question=typeof input.question==='string'?input.question.trim():'';
   if(question.length<2||question.length>600)return send(400,{error:'请输入2–600字的问题'});
