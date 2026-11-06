@@ -33,4 +33,4 @@ DeepSeek 原项目 Secret 不可回读，需在本项目 Settings → Environmen
 
 https://cescsm93.github.io/snow-atlas/
 
-GitHub Pages 版本为静态体验：地图、雪场资料、85 座本地 DEM 模型和有来源的缆车线路可用；2026-11-06 采集结果为 66 座有线路、18 座服务暂不可用、1 座模型范围内无映射线路；票价参考汇率直接读取 Frankfurter。DeepSeek 问答需要服务端密钥，不在 Pages 开放。缆车数据来自各模型范围内的 OpenStreetMap aerialway way，保留原始 way 链接；没有记录时显示缺失。
+GitHub Pages 版本为静态体验：地图、雪场资料、85 座本地 DEM 模型和有来源的缆车线路可用；2026-11-06 采集结果为 66 座有线路、18 座服务暂不可用、1 座模型范围内无映射线路；票价参考汇率直接读取 Frankfurter。Pages 已恢复「雪旅问答」：仅在本地已发布的雪场和坡度资料内检索并标注来源，不调用 DeepSeek，也不声称实时或完整的全球知识。DeepSeek 实时问答仍需独立 Vercel 服务端密钥；密钥不放入 GitHub Pages。缆车数据来自各模型范围内的 OpenStreetMap aerialway way，保留原始 way 链接；没有记录时显示缺失。
