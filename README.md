@@ -28,3 +28,9 @@ DeepSeek 原项目 Secret 不可回读，需在本项目 Settings → Environmen
 
 ### 演示问答保护
 在 Vercel Production 中设置 Secret 类型的 DEEPSEEK_API_KEY 和 COPILOT_DEMO_CODE，然后重新部署。访问码仅私下交给演示参与者；前端只在当前页面内存保存，不写入网址或本地存储。没有访问码的请求在调用 DeepSeek 前拒绝。现有内存限流仅为单实例辅助保护，不能替代访问码或服务商额度控制。
+
+### GitHub Pages 在线体验
+
+https://cescsm93.github.io/snow-atlas/
+
+GitHub Pages 版本为静态体验：地图、雪场资料、85 座本地 DEM 模型和有来源的缆车线路可用；2026-11-06 采集结果为 66 座有线路、18 座服务暂不可用、1 座模型范围内无映射线路；票价参考汇率直接读取 Frankfurter。DeepSeek 问答需要服务端密钥，不在 Pages 开放。缆车数据来自各模型范围内的 OpenStreetMap aerialway way，保留原始 way 链接；没有记录时显示缺失。

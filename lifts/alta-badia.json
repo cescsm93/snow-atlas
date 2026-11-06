@@ -1,0 +1,1 @@
+{"retrievedAt": "2026-11-06", "source": "OpenStreetMap / Overpass", "query": "[out:json][timeout:25];way[\"aerialway\"](46.49651503323751,11.805700689914032,46.59734206676249,11.94872231008597);out tags geom;", "status": "unavailable", "lifts": []}
